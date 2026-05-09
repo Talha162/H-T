@@ -641,11 +641,20 @@ button { font-family: inherit; cursor: pointer; }
 }
 .team-info h3 {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 0 0 10px;
+  margin: 0 0 4px;
   color: var(--ink);
+  letter-spacing: -0.2px;
 }
+.team-credentials {
+  font-size: 13.5px !important;
+  font-weight: 600;
+  color: var(--primary-3) !important;
+  margin: 0 0 12px !important;
+  letter-spacing: 0.3px;
+}
+.team-card-feature .team-credentials { color: var(--accent) !important; }
 .team-info p {
   font-size: 14.5px;
   color: var(--muted);
