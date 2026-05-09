@@ -60,7 +60,7 @@ function handleSubmit(ev) {
     return;
   }
   note.style.color = '';
-  note.textContent = `Thanks, ${data.name.split(' ')[0]}! Your message is queued — we'll be in touch soon.`;
+  note.textContent = `Thanks, ${data.name.split(' ')[0]}! Your message is queued. We'll be in touch soon.`;
   form.reset();
 }
 window.handleSubmit = handleSubmit;
