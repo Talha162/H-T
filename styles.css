@@ -896,6 +896,17 @@ button { font-family: inherit; cursor: pointer; }
   border-color: rgba(20,163,168,0.4);
 }
 .flag { font-size: 40px; line-height: 1; }
+.flag img.emoji {
+  height: 1em;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+img.emoji {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.12em;
+}
 .presence-card h4 {
   font-size: 17px; margin: 14px 0 6px; color: #fff;
 }

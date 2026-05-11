@@ -48,6 +48,12 @@ const io = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+// Twemoji — render flag emojis as SVG so Windows desktop shows actual flags
+// (Segoe UI Emoji on Windows renders 🇵🇰 as boxed letters "PK")
+if (window.twemoji) {
+  twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+}
+
 // Form submit — opens Gmail compose with prefilled message to H&T inbox
 const HT_INBOX = 'info@htbusinessadvisory.com';
 
