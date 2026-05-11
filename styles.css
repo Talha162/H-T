@@ -820,12 +820,66 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
 }
 
+/* ============= CO-FOUNDER MESSAGE (mirrored) ============= */
+.section-message-cofounder {
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(201,166,90,0.10), transparent 60%),
+    radial-gradient(700px 400px at 95% 90%, rgba(20,163,168,0.10), transparent 60%),
+    linear-gradient(180deg, #F4F7F8 0%, #FFFFFF 100%);
+}
+.message-inner-mirror {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+.message-photo-right {
+  align-items: flex-start;
+}
+.message-photo-badge-left {
+  align-self: flex-start;
+  margin-right: 0;
+  margin-left: -10px;
+}
+.section-message-cofounder .message-photo-badge {
+  background: var(--primary-2);
+}
+.section-message-cofounder .message-photo-frame::before {
+  background: linear-gradient(135deg, var(--gold), transparent 40%, var(--accent));
+}
+.section-message-cofounder .message-photo-frame::after {
+  bottom: -40px;
+  right: auto;
+  left: -50px;
+  background: radial-gradient(circle, rgba(201,166,90,0.22), transparent 70%);
+}
+
 /* ============= GLOBAL PRESENCE ============= */
 .presence-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 18px;
   margin-bottom: 38px;
+}
+.presence-card-uae {
+  background: linear-gradient(160deg, rgba(20,163,168,0.18), rgba(201,166,90,0.12));
+  border-color: rgba(20,163,168,0.35);
+}
+.presence-services {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.presence-services li {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #cfeaec;
 }
 .presence-card {
   background: rgba(255,255,255,0.06);
@@ -962,6 +1016,12 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--muted);
   font-size: 14px;
 }
+.contact-list a {
+  color: var(--primary-2);
+  font-weight: 600;
+  transition: color .2s;
+}
+.contact-list a:hover { color: var(--accent); }
 
 .cta-form {
   background: var(--card);
@@ -1092,6 +1152,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============= RESPONSIVE ============= */
+@media (max-width: 1180px) {
+  .presence-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 50px; }
   .hero-card { justify-self: center; }
@@ -1102,9 +1166,13 @@ button { font-family: inherit; cursor: pointer; }
   .why-grid { grid-template-columns: 1fr 1fr; }
   .cta-inner { grid-template-columns: 1fr; gap: 40px; }
   .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-  .message-inner { grid-template-columns: 1fr; gap: 50px; }
-  .message-photo { align-items: center; }
-  .message-photo-badge { margin-right: 0; }
+  .message-inner,
+  .message-inner-mirror { grid-template-columns: 1fr; gap: 50px; }
+  .message-photo,
+  .message-photo-right { align-items: center; }
+  .message-photo-badge,
+  .message-photo-badge-left { margin-right: 0; margin-left: 0; align-self: center; }
+  .section-message-cofounder .message-inner-mirror { display: flex; flex-direction: column-reverse; }
   .message-quote .quote-mark { top: -40px; font-size: 120px; }
 }
 

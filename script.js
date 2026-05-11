@@ -48,19 +48,51 @@ const io = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Form submit (no backend) — show local confirmation
+// Form submit — opens Gmail compose with prefilled message to H&T inbox
+const HT_INBOX = 'info@htbusinessadvisory.com';
+
 function handleSubmit(ev) {
   ev.preventDefault();
   const form = ev.target;
   const note = document.getElementById('formNote');
   const data = Object.fromEntries(new FormData(form).entries());
+
   if (!data.name || !data.email || !data.service) {
     note.textContent = 'Please complete the required fields.';
     note.style.color = '#B23A48';
     return;
   }
+
+  const subject = `New enquiry: ${data.service} — ${data.name}`;
+  const bodyLines = [
+    `Name: ${data.name}`,
+    `Email: ${data.email}`,
+    `Service of Interest: ${data.service}`,
+    '',
+    'Message:',
+    data.message ? data.message : '(No additional message provided.)'
+  ];
+  const body = bodyLines.join('\n');
+
+  const gmailUrl =
+    'https://mail.google.com/mail/?view=cm&fs=1' +
+    '&to=' + encodeURIComponent(HT_INBOX) +
+    '&su=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+
+  // Fallback to mailto: if Gmail compose is blocked / unavailable
+  const mailtoUrl =
+    'mailto:' + HT_INBOX +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+
+  const popup = window.open(gmailUrl, '_blank', 'noopener');
+  if (!popup) {
+    window.location.href = mailtoUrl;
+  }
+
   note.style.color = '';
-  note.textContent = `Thanks, ${data.name.split(' ')[0]}! Your message is queued. We'll be in touch soon.`;
+  note.textContent = `Thanks, ${data.name.split(' ')[0]}! Gmail is opening in a new tab — please click "Send" to deliver your message.`;
   form.reset();
 }
 window.handleSubmit = handleSubmit;
