@@ -576,6 +576,58 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 0.7;
 }
 
+/* ============= TAX FILING ============= */
+.tax-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.tax-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  transition: transform .3s, box-shadow .3s, border-color .3s, background .3s;
+  position: relative;
+  overflow: hidden;
+}
+.tax-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft-2) 100%);
+}
+.tax-check {
+  flex: 0 0 36px;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, rgba(20,163,168,0.16), rgba(11,54,64,0.08));
+  color: var(--accent);
+  transition: background .3s, color .3s;
+}
+.tax-check svg { width: 20px; height: 20px; }
+.tax-item:hover .tax-check {
+  background: linear-gradient(135deg, var(--accent), var(--primary-2));
+  color: #fff;
+}
+.tax-item h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.tax-item p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 /* ============= TEAM ============= */
 .team-grid {
   display: grid;
@@ -1172,6 +1224,7 @@ img.emoji {
   .hero-card { justify-self: center; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .tax-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .presence-grid { grid-template-columns: 1fr 1fr; }
   .why-grid { grid-template-columns: 1fr 1fr; }
@@ -1211,6 +1264,7 @@ img.emoji {
   .section { padding: 80px 0; }
   .hero { padding: 110px 0 70px; min-height: auto; }
   .services-grid { grid-template-columns: 1fr; }
+  .tax-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
   .presence-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
